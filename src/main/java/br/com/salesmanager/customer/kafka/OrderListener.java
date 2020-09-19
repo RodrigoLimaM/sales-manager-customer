@@ -1,15 +1,15 @@
-package br.com.salesmanager.customer.service;
+package br.com.salesmanager.customer.kafka;
 
-import br.com.salesmanager.customer.model.Order;
 import br.com.salesmanager.customer.model.dto.OrderDTO;
 import br.com.salesmanager.customer.model.enums.OrderStatus;
+import br.com.salesmanager.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Slf4j
 @AllArgsConstructor
 public class OrderListener {
@@ -30,7 +30,7 @@ public class OrderListener {
         var optionalCustomer = customerService.findById(order.getCustomerId());
 
         boolean isValidTransaction = optionalCustomer
-                .map(customer1 -> customerService.hasAvailableBalance(order.getValue(), customer1))
+                .map(cust -> customerService.hasAvailableBalance(order.getValue(), cust))
                 .orElseThrow(() -> new RuntimeException("Null customer"));
 
         var orderDTO = OrderDTO

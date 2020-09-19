@@ -27,7 +27,7 @@ public class CustomerService {
         return customerRepository.findById(customerId);
     }
 
-    public Customer updateBalance(Customer customer, BigDecimal orderValue){
+    public Customer updateBalance(Customer customer, BigDecimal orderValue) {
         customer.setBalance(customer.getBalance().subtract(orderValue));
         return this.save(customer);
     }

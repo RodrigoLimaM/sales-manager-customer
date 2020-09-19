@@ -1,6 +1,6 @@
 package br.com.salesmanager.customer.config;
 
-import br.com.salesmanager.customer.model.Order;
+import br.com.salesmanager.customer.kafka.Order;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;

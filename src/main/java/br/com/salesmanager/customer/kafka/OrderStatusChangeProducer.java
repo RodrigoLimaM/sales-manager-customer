@@ -1,4 +1,4 @@
-package br.com.salesmanager.customer.service;
+package br.com.salesmanager.customer.kafka;
 
 import br.com.salesmanager.customer.model.dto.OrderDTO;
 import lombok.extern.slf4j.Slf4j;

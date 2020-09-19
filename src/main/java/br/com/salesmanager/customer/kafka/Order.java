@@ -1,4 +1,4 @@
-package br.com.salesmanager.customer.model;
+package br.com.salesmanager.customer.kafka;
 
 import br.com.salesmanager.customer.model.enums.OrderStatus;
 import lombok.AllArgsConstructor;
