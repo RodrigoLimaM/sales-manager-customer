@@ -3,23 +3,25 @@ package br.com.salesmanager.customer.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigDecimal;
 
 @Document(collection = "customers")
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @Builder
 public class Customer {
 
-    @Id
-    @Field(name = "_id")
-    private final String customerId;
+    @MongoId(value = FieldType.OBJECT_ID)
+    private final String _id;
 
     @Field(name = "customer_balance")
     private BigDecimal balance;
