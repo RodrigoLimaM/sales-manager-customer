@@ -11,7 +11,7 @@ Microsservice for customer management of the sales-manager architecture
  *  **Request Body**
     ```json
     {
-      "balance": 0
+      "balance": 560
     }
     ```
  * **Success Response:**
