@@ -11,7 +11,7 @@ Microsservice for customer management of the sales-manager architecture
  *  **Request Body**
     ```json
     {
-      "balance": 0
+      "balance": 560
     }
     ```
  * **Success Response:**
@@ -42,7 +42,7 @@ Microsservice for customer management of the sales-manager architecture
     ![Alt text](https://user-images.githubusercontent.com/51386403/93714108-e232b080-fb36-11ea-9881-894dd0f900a2.png "Architecture")
     * 1 - Will receive an order, create it and persist on MongoDB with status ***PENDING***;
     * 2 - The persisted order will be produced on ***NEW_ORDER*** Kafka topic;
-    * 3 - Will listen to the topic and check if the customer has a balance;
+    * 3 - Will listen to the topic and check if the customer has available balance;
     * 4 - Will produce a message on ***ORDER_STATUS_CHANGE*** Kafka topic updating the order status (***FINISHED*** or ***CANCELLED***);
     * 5 - Will listen to the topic and update the order status on MongoDB.
     
