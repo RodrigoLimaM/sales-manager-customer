@@ -16,7 +16,7 @@ Microsservice for customer management of the sales-manager architecture
     ```
  * **Success Response:**
  
-    * **Code:** 201 <br />
+    * **Code:** 200 <br />
         **Content:**
     ```json
     {

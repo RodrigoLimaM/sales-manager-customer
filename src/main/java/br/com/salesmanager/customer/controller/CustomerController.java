@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 @Validated
 @RestController
@@ -24,8 +22,7 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody @Valid CustomerDTO customerDTO) throws URISyntaxException {
-        return ResponseEntity.created(new URI("/customer"))
-                .body(customerService.insert(customerDTO));
+    public ResponseEntity<Customer> createCustomer(@RequestBody @Valid CustomerDTO customerDTO) {
+        return ResponseEntity.ok(customerService.insert(customerDTO));
     }
 }
