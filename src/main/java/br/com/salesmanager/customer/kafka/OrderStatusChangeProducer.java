@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class OrderStatusChangeProducer {
 
-    private static final String TOPIC = "ORDER_STATUS_CHANGE";
+    private static final String TOPIC = "yje6oae7-ORDER_STATUS_CHANGE";
 
     @Autowired
     private KafkaTemplate<String, OrderDTO> kafkaTemplate;
