@@ -30,7 +30,7 @@ public class OrderListener {
         var optionalCustomer = customerService.findById(order.getCustomerId());
 
         boolean isValidTransaction = optionalCustomer
-                .map(cust -> customerService.hasAvailableBalance(order.getValue(), cust))
+                .map(cust -> customerService.hasAvailableBalance(order.getOrderTotalValue(), cust))
                 .orElseThrow(() -> new RuntimeException("Null customer"));
 
         var orderDTO = OrderDTO
@@ -43,7 +43,7 @@ public class OrderListener {
 
         if (isValidTransaction) {
             orderDTO.setOrderStatus(OrderStatus.FINISHED);
-            var updatedCustomer = customerService.updateBalance(customer, order.getValue());
+            var updatedCustomer = customerService.updateBalance(customer, order.getOrderTotalValue());
             log.info("Customer balance update: {}", updatedCustomer);
         } else {
             orderDTO.setOrderStatus(OrderStatus.CANCELLED);

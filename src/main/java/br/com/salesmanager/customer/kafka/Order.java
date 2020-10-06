@@ -20,7 +20,7 @@ public class Order {
 
     private String orderId;
 
-    private BigDecimal value;
+    private BigDecimal orderTotalValue;
 
     private OrderStatus orderStatus;
 }
