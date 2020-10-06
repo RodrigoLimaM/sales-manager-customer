@@ -40,7 +40,7 @@ Microsservice for customer management of the sales-manager architecture
  * **Architecture:**
  
     ![Alt text](https://user-images.githubusercontent.com/51386403/95261158-45436900-0800-11eb-9b10-ec7bfe7cd371.png "Architecture")
-    * 1 - Will receive an order and check if stock is avaliable
+    * 1 - Will receive an order and check if stock is avaliable;
     * 2 - If has stock, will create the order and persist on MongoDB with status ***PENDING***;
     * 3 - The persisted order will be produced on ***NEW_ORDER*** Kafka topic;
     * 4 - Will listen to the topic and check if the customer has available balance;
