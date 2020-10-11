@@ -9,6 +9,7 @@ public class CustomerMapper {
 
     public Customer mapCustomerDTOToCustomer(CustomerDTO customerDTO) {
         return Customer.builder()
+                .name(customerDTO.getName())
                 .balance(customerDTO.getBalance())
                 .build();
     }

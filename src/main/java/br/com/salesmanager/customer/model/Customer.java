@@ -29,6 +29,9 @@ public class Customer {
     @Field(name = "customer_balance")
     private BigDecimal balance;
 
+    @Field(name = "customer_name")
+    private String name;
+
     @CreatedDate
     @Field(name = "creation_date")
     private final LocalDateTime creationDate;
