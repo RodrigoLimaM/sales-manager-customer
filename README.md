@@ -11,7 +11,8 @@ Microsservice for customer management of the sales-manager architecture
  *  **Request Body**
     ```json
     {
-      "balance": 560
+      "balance": 560,
+      "name": "Rodrigo Lima"
     }
     ```
  * **Success Response:**
@@ -21,6 +22,7 @@ Microsservice for customer management of the sales-manager architecture
     ```json
     {
       "_id": "5f677ec4ab6b5402f7ce30f4",
+      "name": "Rodrigo Lima",
       "balance": 560
     }
     ```
