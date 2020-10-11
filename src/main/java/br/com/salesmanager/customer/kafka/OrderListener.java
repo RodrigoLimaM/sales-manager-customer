@@ -42,7 +42,7 @@ public class OrderListener {
         var customer = optionalCustomer.get();
 
         if (isValidTransaction) {
-            orderDTO.setOrderStatus(OrderStatus.FINISHED);
+            orderDTO.setOrderStatus(OrderStatus.APPROVED);
             var updatedCustomer = customerService.updateBalance(customer, order.getOrderTotalValue());
             log.info("Customer balance update: {}", updatedCustomer);
         } else {
