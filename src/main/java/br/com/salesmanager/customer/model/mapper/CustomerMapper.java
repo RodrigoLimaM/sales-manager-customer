@@ -11,6 +11,8 @@ public class CustomerMapper {
         return Customer.builder()
                 .name(customerDTO.getName())
                 .balance(customerDTO.getBalance())
+                .email(customerDTO.getEmail())
+                .password(customerDTO.getPassword())
                 .build();
     }
 }

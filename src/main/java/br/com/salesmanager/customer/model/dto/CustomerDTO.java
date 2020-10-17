@@ -1,5 +1,7 @@
 package br.com.salesmanager.customer.model.dto;
 
+import br.com.salesmanager.customer.validation.Email;
+import br.com.salesmanager.customer.validation.Password;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,5 +23,15 @@ public class CustomerDTO {
 
     @NotNull
     private BigDecimal balance;
+
+    @NotBlank
+    @NotNull
+    @Email
+    private String email;
+
+    @NotBlank
+    @NotNull
+    @Password
+    private String password;
 
 }

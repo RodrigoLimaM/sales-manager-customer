@@ -12,7 +12,9 @@ Microsservice for customer management of the sales-manager architecture
     ```json
     {
       "balance": 560,
-      "name": "Rodrigo Lima"
+      "email": "rodrigolima@email.com",
+      "name": "Rodrigo Lima",
+      "password": "12345Ab#"
     }
     ```
  * **Success Response:**
@@ -21,9 +23,13 @@ Microsservice for customer management of the sales-manager architecture
         **Content:**
     ```json
     {
-      "_id": "5f677ec4ab6b5402f7ce30f4",
+      "_id": "5f8b358e7eaaac60794a971e",
+      "balance": 560,
       "name": "Rodrigo Lima",
-      "balance": 560
+      "email": "rodrigolima@email.com",
+      "password": "12345Ab#",
+      "creationDate": "2020-10-17T15:18:54.6607379",
+      "updateDate": "2020-10-17T15:18:54.6607379"
     }
     ```
     
@@ -33,9 +39,14 @@ Microsservice for customer management of the sales-manager architecture
         **Content:** 
     ```json
     {
-      "timestamp": "2020-09-20T13:09:56.7218531",
+      "timestamp": "2020-10-17T15:16:25.7291067",
       "status": 400,
-      "message": "Invalid null or blank field"
+      "message": [
+        "password : invalid password : rejected value [12345678]",
+        "email : invalid email : rejected value [test@test]",
+        "name : não deve estar em branco : rejected value []",
+        "balance : não deve ser nulo : rejected value [null]"
+      ]
     }
     ```
   

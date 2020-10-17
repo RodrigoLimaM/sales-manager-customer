@@ -32,6 +32,12 @@ public class Customer {
     @Field(name = "customer_name")
     private String name;
 
+    @Field(name = "customer_email")
+    private String email;
+
+    @Field(name = "customer_password")
+    private String password;
+
     @CreatedDate
     @Field(name = "creation_date")
     private final LocalDateTime creationDate;
