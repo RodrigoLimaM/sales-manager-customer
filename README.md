@@ -51,14 +51,14 @@ Microsservice for customer management of the sales-manager architecture
     ```
   
 * **URL**\
-/customer/{customerId}
+/customer/{email}
 
 * **Method:**\
  `GET`
 
   *  **Path Variables**
 
-     `customerId={String}`
+     `email={String}`
  * **Success Response:**
 
     * **Code:** 200 <br />
