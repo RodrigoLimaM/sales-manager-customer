@@ -50,6 +50,31 @@ Microsservice for customer management of the sales-manager architecture
     }
     ```
   
+* **URL**\
+/customer/{customerId}
+
+* **Method:**\
+ `GET`
+
+  *  **Path Variables**
+
+     `customerId={String}`
+ * **Success Response:**
+
+    * **Code:** 200 <br />
+        **Content:**
+    ```json
+    {
+      "_id": "5f8b358e7eaaac60794a971e",
+      "balance": 560,
+      "name": "Rodrigo Lima",
+      "email": "rodrigolima@email.com",
+      "password": "12345Ab#",
+      "creationDate": "2020-10-17T15:18:54.66",
+      "updateDate": "2020-10-17T15:18:54.66"
+    }
+    ```
+  
  * **Architecture:**
  
     ![Alt text](https://user-images.githubusercontent.com/51386403/95694559-0ef35880-0c09-11eb-9667-9ae838b4d40f.png "Architecture")

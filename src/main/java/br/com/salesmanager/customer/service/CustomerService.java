@@ -5,6 +5,7 @@ import br.com.salesmanager.customer.model.dto.CustomerDTO;
 import br.com.salesmanager.customer.model.mapper.CustomerMapper;
 import br.com.salesmanager.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -36,7 +37,12 @@ public class CustomerService {
         return customer.getBalance().compareTo(orderValue) >= 0;
     }
 
+    public Optional<Customer> findByEmail(String email) {
+        return Optional.ofNullable(customerRepository.findByEmail(email));
+    }
+
     private Customer save(Customer customer) {
         return customerRepository.save(customer);
     }
+
 }
