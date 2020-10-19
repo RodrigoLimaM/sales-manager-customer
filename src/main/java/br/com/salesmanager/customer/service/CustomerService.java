@@ -1,5 +1,6 @@
 package br.com.salesmanager.customer.service;
 
+import br.com.salesmanager.customer.config.exception.CustomerAlreadyExistsException;
 import br.com.salesmanager.customer.model.Customer;
 import br.com.salesmanager.customer.model.dto.CustomerDTO;
 import br.com.salesmanager.customer.model.mapper.CustomerMapper;
@@ -21,7 +22,10 @@ public class CustomerService {
     CustomerMapper customerMapper;
 
     public Customer insert(CustomerDTO customerDTO) {
-        return customerRepository.insert(customerMapper.mapCustomerDTOToCustomer(customerDTO));
+        if(this.findByEmail(customerDTO.getEmail()).isEmpty())
+            return customerRepository.insert(customerMapper.mapCustomerDTOToCustomer(customerDTO));
+        else
+            throw new CustomerAlreadyExistsException();
     }
 
     public Optional<Customer> findById(String customerId){
