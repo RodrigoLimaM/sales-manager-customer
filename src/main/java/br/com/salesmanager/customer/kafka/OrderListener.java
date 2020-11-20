@@ -1,5 +1,6 @@
 package br.com.salesmanager.customer.kafka;
 
+import br.com.salesmanager.customer.model.Customer;
 import br.com.salesmanager.customer.model.dto.OrderDTO;
 import br.com.salesmanager.customer.model.enums.OrderStatus;
 import br.com.salesmanager.customer.service.CustomerService;
@@ -8,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 @Slf4j
@@ -27,23 +30,23 @@ public class OrderListener {
 
         log.info("Message Listened: {}, Topic: {}", order, TOPIC);
 
-        var optionalCustomer = customerService.findById(order.getCustomerId());
+        Optional<Customer> optionalCustomer = customerService.findById(order.getCustomerId());
 
         boolean isValidTransaction = optionalCustomer
                 .map(cust -> customerService.hasAvailableBalance(order.getOrderTotalValue(), cust))
                 .orElseThrow(() -> new RuntimeException("Null customer"));
 
-        var orderDTO = OrderDTO
+        OrderDTO orderDTO = OrderDTO
                 .builder()
                 .customerId(order.getCustomerId())
                 .orderId(order.getOrderId())
                 .build();
 
-        var customer = optionalCustomer.get();
+        Customer customer = optionalCustomer.get();
 
         if (isValidTransaction) {
             orderDTO.setOrderStatus(OrderStatus.APPROVED);
-            var updatedCustomer = customerService.updateBalance(customer, order.getOrderTotalValue());
+            Customer updatedCustomer = customerService.updateBalance(customer, order.getOrderTotalValue());
             log.info("Customer balance update: {}", updatedCustomer);
         } else {
             orderDTO.setOrderStatus(OrderStatus.CANCELLED);

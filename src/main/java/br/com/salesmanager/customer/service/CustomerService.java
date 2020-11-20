@@ -22,7 +22,7 @@ public class CustomerService {
     CustomerMapper customerMapper;
 
     public Customer insert(CustomerDTO customerDTO) {
-        if(this.findByEmail(customerDTO.getEmail()).isEmpty())
+        if(!this.findByEmail(customerDTO.getEmail()).isPresent())
             return customerRepository.insert(customerMapper.mapCustomerDTOToCustomer(customerDTO));
         else
             throw new CustomerAlreadyExistsException();
